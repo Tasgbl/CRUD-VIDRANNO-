@@ -3,31 +3,26 @@ const router = Router();
 const usuarioController = require("../controllers/usuarioController");
 
 router.get("/usuarios", (req, res) => {
-  const resposta = usuarioController.listar();
+  const resposta = usuarioController.buscar();
   res.send(resposta);
 });
 
 router.post("/usuarios", (req, res) => {
   // Chama o método criarAtendimento do usuarioController
-
-  usuarioController.criar();
-  res.send("Estamos criando um novo usuário");
+  const resposta = usuarioController.criar();
+  res.send(resposta);
 });
 
 router.put("/usuario/:id", (req, res) => {
   const { id } = req.params;
-
-  res.send("Estamos atualizando o usuário de id " + id + "...");
-});
-
-router.get("/.", (req, res) => {
-  res.send("Bem-vindo à API de Usuários!");
+  const resposta = usuarioController.alterar(id);
+  res.send(resposta);
 });
 
 router.delete("/usuario/:id", (req, res) => {
   const { id } = req.params;
-
-  res.send("Estamos deletando o usuário " + id + "...");
+  const resposta = usuarioController.deletar(id);
+  res.send(resposta);
 });
 
 module.exports = router;

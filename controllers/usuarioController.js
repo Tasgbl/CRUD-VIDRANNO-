@@ -15,3 +15,4 @@ class clienteController {
     return "Estamos deletando o usuário " + id + "...";
   }
 }
+module.exports = new clienteController();
